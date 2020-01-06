@@ -35,7 +35,7 @@ import time
 import math
 
 # Set a working directory. Currently local, but can be reconfigured later to hit the GitHub repo
-Working = '/Users/azaffos/Box Sync/GitRepositories/pytorch_nlp_tutorial/data/names/'
+Working = '/Users/azaffos/Box Sync/GitRepositories/pytorch_nlp_tutorial/languages/names/'
 
 #############################################################################################################
 ####################################### LOAD DATA FUNCTIONS, TEMPLATE #######################################

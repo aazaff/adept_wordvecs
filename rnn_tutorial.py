@@ -312,43 +312,5 @@ plt.plot(all_losses)
 plt.show()
 
 torch.save(rnn, MODEL_SAVE_FILE)
-# rnn.save_state_dict(MODEL_SAVE_FILE)
-
-
-""" 
-==============================================
-=========== CALCULATING CONFUSION ============ 
-==============================================
-"""
-confusion = torch.zeros(num_testing_categories, num_testing_categories)
-
-# Go through a bunch of examples and record which are correctly guessed
-for i in range(NUM_CONFUSION):
-    category, line, category_tensor, line_tensor = randomTestingExample()
-    output = evaluate(line_tensor)
-    guess, guess_i = categoryFromOutput(output)
-    category_i = testing_categories.index(category)
-    confusion[category_i][guess_i] += 1
-
-# Normalize by dividing every row by its sum
-for i in range(num_categories):
-    confusion[i] = confusion[i] / confusion[i].sum()
-
-# Set up plot
-fig = plt.figure()
-ax = fig.add_subplot(111)
-cax = ax.matshow(confusion.numpy())
-fig.colorbar(cax)
-
-# Set up axes
-ax.set_xticklabels([''] + all_categories, rotation=90)
-ax.set_yticklabels([''] + all_categories)
-
-# Force label at every tick
-ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
-
-# sphinx_gallery_thumbnail_number = 2
-plt.show()
 
 userInput()
